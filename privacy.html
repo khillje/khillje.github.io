@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How the personal Smart Wall household application handles Nest data and credentials.">
+  <meta name="referrer" content="no-referrer">
+  <title>Privacy policy — Smart Wall</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header><a class="brand" href="index.html">Smart Wall</a><nav aria-label="Main"><a href="privacy.html" aria-current="page">Privacy policy</a></nav></header>
+  <main>
+    <p class="eyebrow">Personal use · November 14, 2026</p>
+    <h1>Privacy policy</h1>
+    <p class="intro">Smart Wall is operated by a household for its own smart calendar and home monitoring. It is not offered as a public camera or calendar service.</p>
+    <section><h2>Google and Nest data accessed</h2>
+      <p>With the account owner’s authorization, the application accesses selected Nest device information, such as device names, identifiers and supported capabilities; doorbell chime events and their timestamps; and temporary stream connection details. It receives camera video to display a periodic still image or a brief live doorbell view. The stream negotiation requests receive-only audio and video; playback is muted. The application does not request access to the display device’s microphone or webcam.</p>
+      <p>The Nest permission used is Google’s Smart Device Management scope. An existing Google Cloud Pub/Sub subscription delivers device events using separate subscriber credentials.</p>
+    </section>
+    <section><h2>Use, transmission and sharing</h2>
+      <p>Nest data is used for the household display, camera connection management, event deduplication and recovery. The application exchanges authorization and device requests with Google and receives media through the Nest/WebRTC connection. Connection negotiation involves Google/Nest infrastructure and network addresses; this is not an offline-only feature.</p>
+      <p>The reviewed Nest code does not upload snapshots to this website, advertising services or analytics services. The operator does not sell Nest data, use it for advertising or use it to train AI models. Other calendar and dashboard integrations have their own service providers; Nest media is not included in those integrations by the reviewed camera code.</p>
+    </section>
+    <section><h2>Camera images and retention</h2>
+      <p>The cabin feature draws a decoded frame into the display’s browser canvas and normally attempts a refresh every five minutes when permitted. The last successful image can remain visible if a later refresh fails. This image is retained in the page’s memory until replaced or the page is closed or reloaded; it is not a historical image archive.</p>
+      <p>The doorbell feature normally displays a live view for up to 60 seconds. It closes playback resources when the view ends or a higher-priority display takes over. Failures can prevent immediate confirmation of cloud stream cleanup, so the application retains cleanup status and may block further camera sessions pending review.</p>
+      <p>The reviewed Nest code does not explicitly save image files or video recordings to disk. Browser, operating-system and Google-managed data handling are separate; the operator does not promise that all data is erased from every cache or backup immediately. Existing Google Home/Nest recording and retention settings remain controlled by Google and the account owner.</p>
+    </section>
+    <section><h2>Credentials and local operational records</h2>
+      <p>OAuth client information and refresh tokens are kept outside shared application code. Windows stores the refresh token and client secret using Windows account-bound DPAPI protection. The Raspberry Pi uses an external JSON credential file protected by filesystem permissions; that file is plaintext, not application-encrypted. Access tokens are cached in the application process’s memory.</p>
+      <p>Separate Google Cloud subscriber credentials are stored outside shared code. Local records include hashed doorbell event identifiers with timestamps and camera cleanup status. Doorbell hashes are pruned during event processing using an approximately one-day age limit and a size limit; inactive files may remain longer. Cleanup status remains until resolved or reviewed. These records do not contain saved camera frames.</p>
+      <p>The operator maintains private backups, including encrypted backup archives. Backup retention is manual, without an automatic deletion deadline. Copies of credentials or operational records in backups can remain after live files change. Access to a Windows account, Raspberry Pi account or backup can expose the data available to that account.</p>
+    </section>
+    <section><h2>Control, deletion and contact</h2>
+      <p>The account owner can withdraw device access through <a href="https://nestservices.google.com/partnerconnections">Google Nest Partner Connections Manager</a> and review connected applications through <a href="https://myaccount.google.com/connections">Google Account connections</a>. Removing local files alone does not revoke Google authorization.</p>
+      <p>To remove locally held information, the household operator can stop the relevant integration and remove its credentials and operational records after reviewing cleanup requirements. Deleting retained backup copies requires a separate deliberate action. Reloading the display clears the current page’s in-memory image; it does not delete Google’s recordings.</p>
+      <p>For privacy or deletion requests, contact the household operator directly or use the existing user support email displayed on the application’s Google authorization screen. This private household application has no public registration or support portal.</p>
+    </section>
+    <section><h2>This informational website</h2>
+      <p>These pages contain no login, camera media, calendar feeds, tracking scripts, advertising, forms or application cookies. The website host processes ordinary web requests, including visitors’ IP addresses. If hosted on GitHub Pages, IP addresses are logged for security purposes under <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s privacy statement</a>. The public website is separate from the household display and never needs its credentials.</p>
+    </section>
+  </main>
+  <footer><span>Smart Wall · Private household application</span><a href="index.html">Homepage</a></footer>
+</body>
+</html>
